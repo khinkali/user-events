@@ -12,19 +12,30 @@ import javax.json.JsonObject;
 public class UserCreated implements BaseEvent {
     public static final String TOPIC = "users";
 
+    public enum JSON_KEYS {
+        USER_ID("userId"), USERNAME("username");
+
+        @Getter
+        String jsonKey;
+
+        JSON_KEYS(String jsonKey) {
+            this.jsonKey = jsonKey;
+        }
+    }
+
     private final String userId;
     private final String username;
 
     public UserCreated(JsonObject jsonObject) {
-        this(jsonObject.getString("userId"),
-                jsonObject.getString("username"));
+        this(jsonObject.getString(JSON_KEYS.USER_ID.getJsonKey()),
+                jsonObject.getString(JSON_KEYS.USERNAME.getJsonKey()));
     }
 
     @Override
     public JsonObject getJson() {
         return Json.createObjectBuilder()
-                .add("userId", userId)
-                .add("username", username)
+                .add(JSON_KEYS.USER_ID.getJsonKey(), userId)
+                .add(JSON_KEYS.USERNAME.getJsonKey(), username)
                 .build();
     }
 
