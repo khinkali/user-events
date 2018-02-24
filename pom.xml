@@ -3,9 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.khinkali.cryptowatch</groupId>
     <artifactId>user.events</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.6</version>
     <packaging>jar</packaging>
     <dependencies>
+        <dependency>
+            <groupId>ch.khinkali.cryptowatch</groupId>
+            <artifactId>core.events</artifactId>
+            <version>0.0.6</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -13,27 +20,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>yasson</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>1.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
