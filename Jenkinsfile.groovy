@@ -1,10 +1,13 @@
-@Library('semantic_releasing')_
+@Library('semantic_releasing') _
 
-podTemplate(label: 'mypod') {
+podTemplate(label: 'mypod', containers: [
+        containerTemplate(name: 'maven', image: 'maven:3.5.2-jdk-8', command: 'cat', ttyEnabled: true)
+],
+        volumes: [
+                hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+        ]) {
 
     node('mypod') {
-        def mvnHome = tool 'M3'
-        env.PATH = "${mvnHome}/bin/:${env.PATH}"
         properties([
                 buildDiscarder(
                         logRotator(artifactDaysToKeepStr: '',
@@ -21,7 +24,9 @@ podTemplate(label: 'mypod') {
             env.VERSION = semanticReleasing()
             currentBuild.displayName = env.VERSION
 
-            sh "mvn versions:set -DnewVersion=${env.VERSION}"
+            container('maven') {
+                sh "mvn versions:set -DnewVersion=${env.VERSION}"
+            }
             sh "git config user.email \"jenkins@khinkali.ch\""
             sh "git config user.name \"Jenkins\""
             sh "git tag -a ${env.VERSION} -m \"${env.VERSION}\""
@@ -29,7 +34,9 @@ podTemplate(label: 'mypod') {
                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/khinkali/user-events.git --tags"
             }
             withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
-                sh "mvn -s settings.xml clean deploy"
+                container('maven') {
+                    sh "mvn -s settings.xml clean deploy"
+                }
             }
             junit allowEmptyResults: true, testResults: '**/target/surefire-reports/TEST-*.xml'
         }
