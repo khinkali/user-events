@@ -1,45 +1,45 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>ch.khinkali.cryptowatch</groupId>
-    <artifactId>user.events</artifactId>
-    <version>0.1.2</version>
-    <packaging>jar</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>ch.khinkali.cryptowatch</groupId>
-            <artifactId>core.events</artifactId>
-            <version>0.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.12</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.1</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-    <build>
-        <finalName>user-events</finalName>
-    </build>
-
-    <distributionManagement>
-        <repository>
-            <id>maven-releases</id>
-            <url>http://18.196.37.97:30181/repository/maven-releases/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
-    </distributionManagement>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ch.khinkali.cryptowatch</groupId>
+  <artifactId>user.events</artifactId>
+  <version>0.1.2</version>
+  <packaging>jar</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>ch.khinkali.cryptowatch</groupId>
+      <artifactId>core.events</artifactId>
+      <version>0.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.12</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.json</artifactId>
+      <version>1.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>user-events</finalName>
+  </build>
+  
+  <distributionManagement>
+    <repository>
+      <id>maven-releases</id>
+      <url>http://5.189.154.24:30181/repository/maven-releases/</url>
+      <uniqueVersion>false</uniqueVersion>
+    </repository>
+  </distributionManagement>
+  
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
 </project>
