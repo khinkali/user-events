@@ -26,8 +26,8 @@ public class UserCreated extends BaseEvent {
     private final String username;
 
     public UserCreated(JsonObject jsonObject) {
-        userId = jsonObject.getString(JSON_KEYS.USER_ID.getJsonKey());
-        username = jsonObject.getString(JSON_KEYS.USERNAME.getJsonKey());
+        this(jsonObject.getString(JSON_KEYS.USER_ID.getJsonKey()),
+                jsonObject.getString(JSON_KEYS.USERNAME.getJsonKey()));
     }
 
     public JsonObject getJson() {
