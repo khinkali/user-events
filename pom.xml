@@ -9,7 +9,7 @@
     <dependency>
       <groupId>ch.khinkali.cryptowatch</groupId>
       <artifactId>core.events</artifactId>
-      <version>0.1.5</version>
+      <version>0.1.7</version>
       <scope>provided</scope>
     </dependency>
     

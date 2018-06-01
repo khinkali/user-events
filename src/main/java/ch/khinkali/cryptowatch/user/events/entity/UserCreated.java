@@ -1,10 +1,12 @@
 package ch.khinkali.cryptowatch.user.events.entity;
 
 import ch.khinkali.cryptowatch.events.entity.BaseEvent;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.json.JsonObject;
 
+@AllArgsConstructor
 @Getter
 public class UserCreated extends BaseEvent {
     public static final String TOPIC = "users";
@@ -24,8 +26,6 @@ public class UserCreated extends BaseEvent {
     private final String username;
 
     public UserCreated(JsonObject jsonObject) {
-        super(jsonObject.getString(BaseEvent.JSON_KEYS.ID.getJsonKey()),
-                jsonObject.getJsonNumber(BaseEvent.JSON_KEYS.TIMESTAMP.getJsonKey()).longValue());
         userId = jsonObject.getString(JSON_KEYS.USER_ID.getJsonKey());
         username = jsonObject.getString(JSON_KEYS.USERNAME.getJsonKey());
     }
@@ -36,6 +36,5 @@ public class UserCreated extends BaseEvent {
                 .add(JSON_KEYS.USERNAME.getJsonKey(), username)
                 .build();
     }
-
 
 }
